@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/todo_graph"
+    app:startDestination="@id/todoListFragment">
+
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="com.example.simpletodoapp.todo.ui.list.TodoListFragment"
+        android:label="TodoListFragment"
+        tools:layout="@layout/fragment_todo_list">
+        <action
+            android:id="@+id/action_todoListFragment_to_todoInsertFragment"
+            app:destination="@id/todoInsertFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_todoDetailFragment"
+            app:destination="@id/todoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoInsertFragment"
+        android:name="com.example.simpletodoapp.todo.ui.insert.TodoInsertFragment"
+        android:label="TodoInsertFragment"
+        tools:layout="@layout/fragment_todo_insert" />
+    <fragment
+        android:id="@+id/todoDetailFragment"
+        android:name="com.example.simpletodoapp.todo.ui.detail.TodoDetailFragment"
+        android:label="TodoDetailFragment"
+        tools:layout="@layout/fragment_todo_detail">
+        <argument
+            android:name="todo_id"
+            app:argType="long" />
+    </fragment>
+
+</navigation>

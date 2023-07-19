@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiState"
+            type="com.example.simpletodoapp.todo.ui.list.TodoUiState" />
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> uiState.onClick.invoke()}"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:id="@+id/todo_text"
+            style="@style/TodoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{uiState.todo}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Todo" />
+
+        <Space
+            android:id="@+id/todo_spacer"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:layout_constraintTop_toBottomOf="@id/todo_text" />
+
+        <TextView
+            android:id="@+id/todo_description_text"
+            style="@style/TodoDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{uiState.description}"
+            android:visibility="@{uiState.description == null ? View.GONE : View.VISIBLE}"
+            app:layout_constraintTop_toBottomOf="@id/todo_spacer"
+            tools:text="Todo description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
